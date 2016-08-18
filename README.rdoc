@@ -1,28 +1,16 @@
-== README
+== Issue Description
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== Scenario
+Your app contains libraries or frameworks with a LARGE amount of assets. In this minimal example we use ExtJS located
+in <tt>vendor/assets/javascripts</tt>. While the vast majority of the assets are not used, they are needed for development purposes.
 
-Things you may want to cover:
+Forthermore, configure <tt>config/initializers/assets.rb</tt> to precompile assets using wildcards, here <tt>*.png *.gif</tt>.
 
-* Ruby version
+When starting the rails server in development, the older versions of sprockets-rails (i.e. 2.3.3) would have no issues.
+Newer versions of sprockets-rails (tested with 3.1.1) will take a LONG time before rendering the first time, as if they where procompiling ALL assets instead of just the used ones.
 
-* System dependencies
+=== Steps to reproduce
+Run and request the root page of the app. The browser will load for a few minutes before actually showing anything.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+=== How to make it work again
+Either remove the wildcard selectors in the assets.rb or manually require the older sporckets-rails gem  (2.3.3)
